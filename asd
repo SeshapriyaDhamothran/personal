@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffb3c6, #ffd6e0, #cdb4ff);
+    font-family: "Quicksand", sans-serif;
+    overflow: hidden;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.97);
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .screen { display: none; }
+  .active { display: block; }
+
+  h1 {
+    font-family: "Pacifico", cursive;
+    color: #5a189a;
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+
+  .gif {
+    width: 220px;
+    border-radius: 12px;
+    margin: 15px 0;
+  }
+
+  .buttons {
+    position: relative;
+    height: 150px;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  /* FORCE cute buttons */
+  button {
+    padding: 14px 28px !important;
+    border-radius: 999px !important;
+    border: none !important;
+    font-size: 18px !important;
+    font-family: "Quicksand", sans-serif !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  /* YES buttons */
+  #yes, #yes3, .cute-btn {
+    background: linear-gradient(135deg, #ff5f9e, #ff9a8b) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(255, 95, 158, 0.6) !important;
+  }
+
+  /* NO buttons */
+  #no, #no3, #no4 {
+    background: linear-gradient(135deg, #7b2ff7, #4facfe) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.6) !important;
+    position: absolute;
+    left: 55%;
+    top: 45%;
+  }
+
+  #yes:hover, #yes3:hover, .cute-btn:hover,
+  #no:hover, #no3:hover, #no4:hover {
+    transform: scale(1.12) !important;
+  }
+
+  .glow-number {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff2f6d;
+    animation: blinkGlow 1.5s infinite;
+    text-shadow: 0 0 5px #ff8fb1, 0 0 10px #ff8fb1, 0 0 20px #ff4f8b;
+  }
+
+  @keyframes blinkGlow {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <!-- Screen 1 -->
+  <div class="screen active" id="s1">
+    <h1>Hey, this is for you 💖</h1>
+    <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eWlkenF3b3RqajZiaWN2OG9lbzlpYjJsdTNncXJleXBuYWM2cWtnaiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/vL8jVjKkqbVh2qdFj0/giphy.gif">
+    <br>
+    <button class="cute-btn" onclick="go(2)">Next 💕</button>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="screen" id="s2">
+    <h1>Are you angry on me? 🥺</h1>
+    <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eWlkenF3b3RqajZiaWN2OG9lbzlpYjJsdTNncXJleXBuYWM2cWtnaiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/eGlD1SMuG5K9grlbbs/giphy.gif">
+
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+
+    <p id="notOkMsg" style="display:none; margin-top:15px; color:#d94a6a; font-size:18px; font-weight:600;">
+      Not acceptable 😤 Try again!
+    </p>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="screen" id="s3">
+    <h1>Forgive me? 🥺💗</h1>
+    <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MzQ5anlsZ214aDBhNGFqcDQ3MDVmOTkxZDFyNnl1aTA2ejc5NzR6eSZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/LBMiDWkCw0e53UOcm0/giphy.gif">
+
+    <div class="buttons" id="zone3">
+      <button id="yes3">Yes</button>
+      <button id="no3">No</button>
+    </div>
+  </div>
+
+  <!-- Screen 4 -->
+  <div class="screen" id="s4">
+    <h1>I loooove youu 😘❤️</h1>
+    <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d3R4bzE2Z2RhaGttNWhndW8zYWprcW9ueHR6eTFzbHl2MzJwcmp5cCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/IzXiddo2twMmdmU8Lv/giphy.gif">
+
+    <div class="buttons" id="zone4">
+      <button class="cute-btn" onclick="go(5)">Come here 💖</button>
+      <button id="no4">No 🙈</button>
+    </div>
+  </div>
+
+  <!-- Screen 5 -->
+  <div class="screen" id="s5">
+    <h1>This is for you..</😻h1>
+    <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d3R4bzE2Z2RhaGttNWhndW8zYWprcW9ueHR6eTFzbHl2MzJwcmp5cCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/ytu2GUYbvhz7zShGwS/giphy.gif">
+  </div>
+
+</div>
+
+<script>
+let heartsStarted = false;
+
+function go(n) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("s" + n).classList.add("active");
+
+  if ((n === 4 || n === 5) && !heartsStarted) {
+    startHearts();
+    heartsStarted = true;
+  }
+}
+
+// Screen 2
+document.getElementById("yes").onclick = () => {
+  document.getElementById("notOkMsg").style.display = "block";
+};
+document.getElementById("no").onclick = () => go(3);
+
+// Screen 3
+document.getElementById("yes3").onclick = () => go(4);
+
+// Flying NO in screen 3
+const no3 = document.getElementById("no3");
+const zone3 = document.getElementById("zone3");
+
+zone3.addEventListener("mousemove", e => {
+  const b = no3.getBoundingClientRect();
+  const d = Math.hypot(
+    e.clientX - (b.left + b.width / 2),
+    e.clientY - (b.top + b.height / 2)
+  );
+
+  if (d < 120) {
+    no3.style.left = Math.random() * 70 + "%";
+    no3.style.top = Math.random() * 70 + "%";
+  }
+});
+
+// Flying NO in screen 4
+const no4 = document.getElementById("no4");
+const zone4 = document.getElementById("zone4");
+
+zone4.addEventListener("mousemove", e => {
+  const b = no4.getBoundingClientRect();
+  const d = Math.hypot(
+    e.clientX - (b.left + b.width / 2),
+    e.clientY - (b.top + b.height / 2)
+  );
+
+  if (d < 120) {
+    no4.style.left = Math.random() * 70 + "%";
+    no4.style.top = Math.random() * 70 + "%";
+  }
+});
+
+// Hearts
+function startHearts() {
+  const card = document.getElementById("card");
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    card.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }, 400);
+}
+</script>
+
+</body>
+</html>
